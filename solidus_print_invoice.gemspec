@@ -22,8 +22,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'prawn-rails', '~> 0.1.1'
   s.add_runtime_dependency 'solidus_core', s.version
+  s.add_runtime_dependency 'prawn-rails', '~> 0.1.1'
 
   s.add_development_dependency 'capybara', '~> 2.4.4'
   s.add_development_dependency 'poltergeist', '~> 1.5'

@@ -18,12 +18,12 @@ In the `Spree::Admin::OrdersController#edit` view, you'll find an additional but
 
 Add to your `Gemfile`
 ```ruby
-gem 'solidus_print_invoice', github: 'simo163/spree_print_invoice', branch: 'master'
+gem 'solidus_print_invoice', github: 'simo163/solidus_print_invoice', branch: 'master'
 ```
 
 Run
 ```
-bundle && exec rails g spree_print_invoice:install
+bundle && exec rails g solidus_print_invoice:install
 ```
 
 Enjoy! Now you can generate invoices and packaging slips with sequential numbers from arbitrary Spree objects.
