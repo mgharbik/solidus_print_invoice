@@ -1,4 +1,4 @@
-# Spree Print Invoice
+# Solidus Print Invoice
 
 [![Build Status](https://travis-ci.org/spree-contrib/spree_print_invoice.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_print_invoice)
 [![Code Climate](https://codeclimate.com/github/spree-contrib/spree_print_invoice/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_print_invoice)
@@ -18,7 +18,7 @@ In the `Spree::Admin::OrdersController#edit` view, you'll find an additional but
 
 Add to your `Gemfile`
 ```ruby
-gem 'spree_print_invoice', github: 'spree-contrib/spree_print_invoice', branch: 'master'
+gem 'solidus_print_invoice', github: 'simo163/spree_print_invoice', branch: 'master'
 ```
 
 Run
@@ -38,7 +38,7 @@ Enjoy! Now you can generate invoices and packaging slips with sequential numbers
   Spree::PrintInvoice::Config.set(logo_path: '/path/to/public/images/company-logo.png')
   ```
 
-2. Add your own own footer texts to the locale. The current footer works with `:footer_left1` , `:footer_left2` and `:footer_right1`, `:footer_right2` where the 1 version is on the left in bold, and the 2 version the "value" on the right.
+2. Add your own footer texts to the locale. The current footer works with `:footer_left1` , `:footer_left2` and `:footer_right1`, `:footer_right2` where the 1 version is on the left in bold, and the 2 version the "value" on the right.
 
 3. Override any of the partial templates.
 
