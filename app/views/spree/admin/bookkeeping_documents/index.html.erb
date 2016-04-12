@@ -1,5 +1,5 @@
 <% if order_focused? %>
-  <%= render partial: 'spree/admin/shared/order_tabs', locals: { current: :documents } %>
+  <%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Documents' } %>
 
   <% content_for :page_title do %>
     <%= t(:documents_for_order, scope: [:spree, :print_invoice], order_number: @order.number) %>
@@ -118,7 +118,7 @@
   </table>
 <% else %>
   <div class="alert alert-info no-objects-found">
-    <%= Spree.t(:no_resource_found, resource: plural_resource_name(Spree::BookkeepingDocument)) %>,
+    <%= Spree.t(:no_resource_found, resource: Spree::BookkeepingDocument.model_name.human(count: :other)) %>
   </div>
 <% end %>
 
