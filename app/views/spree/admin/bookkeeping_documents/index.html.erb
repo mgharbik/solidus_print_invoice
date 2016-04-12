@@ -2,91 +2,84 @@
   <%= render partial: 'spree/admin/shared/order_tabs', locals: { current: 'Documents' } %>
 
   <% content_for :page_title do %>
-    <%= t(:documents_for_order, scope: [:spree, :print_invoice], order_number: @order.number) %>
+    <i class="fa fa-arrow-right"></i> <%= t(:documents, scope: [:spree, :print_invoice]) %>
   <% end %>
 <% else %>
   <% content_for :page_title do %>
     <%= t(:documents, scope: [:spree, :print_invoice]) %>
   <% end %>
 
+  <% content_for :table_filter_title do %>
+    <%= Spree.t(:search) %>
+  <% end %>
+
   <% content_for :table_filter do %>
     <div data-hook="admin_orders_index_search">
-
       <%= search_form_for [:admin, @search] do |f| %>
         <%= f.hidden_field :template_type_eq, value: params[:q][:template_type_eq] %>
-        <div class="row">
-          <div class="date-range-filter col-md-8">
-            <div class="form-group">
-              <%= label_tag :q_created_at_gt, Spree.t(:date_range) %>
-              <div class="row no-padding-bottom">
-                <div class="col-md-6">
-                  <div class="input-group">
-                    <%= f.text_field :created_at_gt, class: 'datepicker datepicker-from form-control', value: params[:q][:created_at_gt], placeholder: Spree.t(:start) %>
-                    <span class="input-group-addon">
-                      <i class="icon icon-calendar"></i>
-                    </span>
-                  </div>
 
-                </div>
-                <div class="col-md-6">
-                  <div class="input-group">
-                    <%= f.text_field :created_at_lt, class: 'datepicker datepicker-to form-control', value: params[:q][:created_at_lt], placeholder: Spree.t(:stop) %>
-                    <span class="input-group-addon">
-                      <i class="icon icon-calendar"></i>
-                    </span>
-                  </div>
-                </div>
+        <div class="row">
+          <div class="alpha four columns">
+            <div class="date-range-filter field">
+              <%= label_tag :q_created_at_gt, Spree.t(:date_range) %>
+              <div class="date-range-fields">
+                <%= f.text_field :created_at_gt, :class => 'datepicker datepicker-from', :value => params[:q][:created_at_gt], :placeholder => Spree.t(:start) %>
+
+                <span class="range-divider">
+                  <i class="fa fa-arrow-right"></i>
+                </span>
+
+                <%= f.text_field :created_at_lt, :class => 'datepicker datepicker-to', :value => params[:q][:created_at_lt], :placeholder => Spree.t(:stop) %>
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
-              <%= label_tag :q_number_cont, Spree.t(:printable_number, number: '') %>
+          <div class="omega twelve columns">
+            <div class="field">
+              <%= label_tag :q_number_cont, Spree.t(:order_number, number: '') %>
               <%= f.text_field :number_cont, class: 'form-control js-quick-search-target' %>
             </div>
           </div>
-
         </div>
 
         <div class="row">
-
-          <div class="col-md-4">
-            <div class="form-group">
+          <div class="alpha five columns">
+            <div class="field">
               <%= label_tag :q_firstname_start, Spree.t(:first_name_begins_with) %>
               <%= f.text_field :firstname_start, class: 'form-control' %>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
+          <div class="five columns">
+            <div class="field">
               <%= label_tag :q_lastname_start, Spree.t(:last_name_begins_with) %>
               <%= f.text_field :lastname_start, class: 'form-control' %>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="form-group">
+          <div class="omega six columns">
+            <div class="field">
               <%= label_tag :q_email_cont, Spree.t(:email) %>
               <%= f.text_field :email_cont, class: 'form-control js-filterable' %>
             </div>
           </div>
-
         </div>
 
-        <div data-hook="admin_orders_index_search_buttons" class="form-actions">
-          <%= button Spree.t(:filter_results), 'search' %>
-        </div>
+        <div class="clearfix"></div>
 
+        <div class="actions filter-actions">
+          <div data-hook="admin_orders_index_search_buttons">
+            <%= button Spree.t(:filter_results), 'search' %>
+          </div>
+        </div>
       <% end %>
     </div>
-
   <% end %>
-  <%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @bookkeeping_documents } %>
+  <%= paginate @collection, theme: "solidus_admin" %>
 <% end %>
 
-<% if @bookkeeping_documents.any? %>
-  <table class="table" id="listing_orders" data-hook>
+<% if @collection.any? %>
+  <table class="index" id="listing_orders" data-hook>
     <thead>
       <tr data-hook="printables_index_headers">
         <th><%= sort_link @search, :created_at, I18n.t(:date, scope: [:spree, :print_invoice]) %></th>
@@ -100,7 +93,7 @@
       </tr>
     </thead>
     <tbody>
-    <% @bookkeeping_documents.each do |bookkeeping_document| %>
+    <% @collection.each do |bookkeeping_document| %>
       <tr data-hook="admin_printables_index_rows" class="<%= cycle('odd', 'even') %>">
         <td><%= l bookkeeping_document.created_at.to_date %></td>
         <td><%= I18n.t(bookkeeping_document.document_type, scope: [:spree, :print_invoice]) %></td>
@@ -117,11 +110,11 @@
     </tbody>
   </table>
 <% else %>
-  <div class="alert alert-info no-objects-found">
+  <div class="alpha twelve columns no-objects-found">
     <%= Spree.t(:no_resource_found, resource: Spree::BookkeepingDocument.model_name.human(count: :other)) %>
   </div>
 <% end %>
 
 <% unless order_focused? %>
-  <%= render partial: 'spree/admin/shared/index_table_options', locals: { collection: @bookkeeping_documents, simple: true } %>
+  <%= paginate @collection, theme: "solidus_admin" %>
 <% end %>
