@@ -22,7 +22,9 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'solidus_core', s.version
+  solidus_version = ['>= 1.1.0.alpha', '< 2']
+
+  s.add_runtime_dependency 'solidus_core', solidus_version
   s.add_runtime_dependency 'prawn-rails', '~> 0.1.1'
 
   s.add_development_dependency 'capybara', '~> 2.4.4'

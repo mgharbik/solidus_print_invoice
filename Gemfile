@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'solidus'
-gem 'solidus_auth_devise'
+gem 'solidus', git: 'git@github.com:solidusio/solidus.git', branch: 'master'
+gem 'solidus_auth_devise', git: 'git@github.com:solidusio/solidus_auth_devise.git', branch: 'master'
 
 gemspec
