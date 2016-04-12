@@ -1,0 +1,5 @@
+<ul id="sub_nav" class="admin-subnav" data-hook="admin_document_sub_tabs">
+  <%= tab :all, url: admin_bookkeeping_documents_path, :match_path => %r(^/admin/bookkeeping_documents\z) %>
+  <%= tab :invoices, url: admin_bookkeeping_documents_path(q: { template_eq: 'invoice' }), :match_path => %r(invoice) %>
+  <%= tab :packaging_slips, url: admin_bookkeeping_documents_path(q: { template_eq: 'packaging_slip' }), :match_path => %r(packaging_slip) %>
+</ul>

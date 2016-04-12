@@ -1,6 +1,12 @@
 ---
 en:
   spree:
+    admin:
+      tab:
+        all: All
+        documents: Documents
+        invoices: Invoices
+        packaging_slips: Packaging Slips
     print_invoice:
       document_type: Document
       number: Number

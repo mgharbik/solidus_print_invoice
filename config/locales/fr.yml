@@ -1,6 +1,12 @@
 ---
 fr:
   spree:
+    admin:
+      tab:
+        all: Tous
+        documents: Documents
+        invoices: Factures
+        packaging_slips: Bordereaux de Livraison
     print_invoice:
       document_type: Document
       number: Numéro
