@@ -16,7 +16,6 @@ en:
       date: Date
       total: Total
       documents: Documents
-      documents_for_order: "Documents for order %{order_number}"
       buttons:
         invoice: Print Invoice
         packaging_slip: Print Packaging Slip

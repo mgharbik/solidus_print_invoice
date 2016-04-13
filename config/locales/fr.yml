@@ -19,7 +19,13 @@ fr:
       buttons:
         invoice: Imprimer Facture
         packaging_slip: Imprimer Bordereau de Livraison
+      order_invoice: Facture
+      order_packaging_slip: Bordereau de Livraison
+      reimbursement_invoice: Reimbursement Facture
       invoice: Facture
+      invoices: Factures
+      reimbursement: Reimbursement
+      reimbursements: Reimbursements
       item_name: Nom ou Reference Article
       of: de
       via: via
